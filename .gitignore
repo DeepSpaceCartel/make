@@ -76,3 +76,7 @@ mkconfig.h
 make-[0-9]*/
 make-[0-9]*.tar.*
 checkcfg.*.log
+
+# ./bootstrap
+.bootstrap4019.0
+.bootstrap4019.1

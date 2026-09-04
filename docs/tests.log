@@ -1,0 +1,673 @@
+vscode ➜ /workspaces/make (master) $ make check
+Making check in lib
+make[1]: Entering directory '/workspaces/make/lib'
+sed -e 1h -e '1s,.*,/* DO NOT EDIT! GENERATED AUTOMATICALLY! */,' -e 1G \
+  -e 's|@''HAVE_ALLOCA_H''@|1|g' \
+  ./alloca.in.h > alloca.h-t
+mv alloca.h-t alloca.h
+make  check-recursive
+make[2]: Entering directory '/workspaces/make/lib'
+make[3]: Entering directory '/workspaces/make/lib'
+gcc -DHAVE_CONFIG_H -I. -I../src     -Wno-cast-qual -Wno-conversion -Wno-float-equal -Wno-sign-compare -Wno-undef -Wno-unused-function -Wno-unused-parameter -Wno-float-conversion -Wimplicit-fallthrough -Wno-pedantic -Wno-sign-conversion -Wno-type-limits -Wno-unsuffixed-float-constants -g -O2 -MT libgnu_a-concat-filename.o -MD -MP -MF .deps/libgnu_a-concat-filename.Tpo -c -o libgnu_a-concat-filename.o `test -f 'concat-filename.c' || echo './'`concat-filename.c
+mv -f .deps/libgnu_a-concat-filename.Tpo .deps/libgnu_a-concat-filename.Po
+gcc -DHAVE_CONFIG_H -I. -I../src     -Wno-cast-qual -Wno-conversion -Wno-float-equal -Wno-sign-compare -Wno-undef -Wno-unused-function -Wno-unused-parameter -Wno-float-conversion -Wimplicit-fallthrough -Wno-pedantic -Wno-sign-conversion -Wno-type-limits -Wno-unsuffixed-float-constants -g -O2 -MT libgnu_a-findprog-in.o -MD -MP -MF .deps/libgnu_a-findprog-in.Tpo -c -o libgnu_a-findprog-in.o `test -f 'findprog-in.c' || echo './'`findprog-in.c
+mv -f .deps/libgnu_a-findprog-in.Tpo .deps/libgnu_a-findprog-in.Po
+rm -f libgnu.a
+ar cr libgnu.a libgnu_a-concat-filename.o libgnu_a-findprog-in.o    
+ranlib libgnu.a
+make[3]: Leaving directory '/workspaces/make/lib'
+make[2]: Leaving directory '/workspaces/make/lib'
+make[1]: Leaving directory '/workspaces/make/lib'
+Making check in po
+make[1]: Entering directory '/workspaces/make/po'
+make make.pot-update
+make[2]: Entering directory '/workspaces/make/po'
+sed -e '/^#/d' remove-potcdate.sin > t-remove-potcdate.sed
+mv t-remove-potcdate.sed remove-potcdate.sed
+package_gnu=""; \
+test -n "$package_gnu" || { \
+  if { if (LC_ALL=C find --version) 2>/dev/null | grep GNU >/dev/null; then \
+         LC_ALL=C find -L .. -maxdepth 1 -type f \
+                       -size -10000000c -exec grep 'GNU make' \
+                       /dev/null '{}' ';' 2>/dev/null; \
+       else \
+         LC_ALL=C grep 'GNU make' ../* 2>/dev/null; \
+       fi; \
+     } | grep -v 'libtool:' >/dev/null; then \
+     package_gnu=yes; \
+   else \
+     package_gnu=no; \
+   fi; \
+}; \
+if test "$package_gnu" = "yes"; then \
+  package_prefix='GNU '; \
+else \
+  package_prefix=''; \
+fi; \
+if test -n 'bug-make@gnu.org' || test 'bug-make@gnu.org' = '@'PACKAGE_BUGREPORT'@'; then \
+  msgid_bugs_address='bug-make@gnu.org'; \
+else \
+  msgid_bugs_address='bug-make@gnu.org'; \
+fi; \
+case `/usr/bin/xgettext --version | sed 1q | sed -e 's,^[^0-9]*,,'` in \
+  '' | 0.[0-9] | 0.[0-9].* | 0.1[0-5] | 0.1[0-5].* | 0.16 | 0.16.[0-1]*) \
+    /usr/bin/xgettext --default-domain=make --directory=.. \
+      --add-comments=TRANSLATORS: --keyword=_ --keyword=N_ --from-code=UTF-8 --flag=_:1:pass-c-format --flag=N_:1:pass-c-format --flag=DB:2:c-format --flag=DBF:2:c-format --flag=DBS:2:c-format --flag=O:3:c-format  --flag=OSN:3:c-format --flag=ONS:3:c-format --flag=OS:3:c-format --flag=OSS:3:c-format --flag=OSSS:3:c-format --flag=ON:3:c-format --flag=ONN:3:c-format ${end_of_xgettext_options+}  \
+      --files-from=./POTFILES.in \
+      --copyright-holder='Free Software Foundation, Inc.' \
+      --msgid-bugs-address="$msgid_bugs_address" \
+    ;; \
+  *) \
+    /usr/bin/xgettext --default-domain=make --directory=.. \
+      --add-comments=TRANSLATORS: --keyword=_ --keyword=N_ --from-code=UTF-8 --flag=_:1:pass-c-format --flag=N_:1:pass-c-format --flag=DB:2:c-format --flag=DBF:2:c-format --flag=DBS:2:c-format --flag=O:3:c-format  --flag=OSN:3:c-format --flag=ONS:3:c-format --flag=OS:3:c-format --flag=OSS:3:c-format --flag=OSSS:3:c-format --flag=ON:3:c-format --flag=ONN:3:c-format ${end_of_xgettext_options+}  \
+      --files-from=./POTFILES.in \
+      --copyright-holder='Free Software Foundation, Inc.' \
+      --package-name="${package_prefix}make" \
+      --package-version='4.4.90' \
+      --msgid-bugs-address="$msgid_bugs_address" \
+    ;; \
+esac
+test ! -f make.po || { \
+  if test -f ./make.pot; then \
+    sed -f remove-potcdate.sed < ./make.pot > make.1po && \
+    sed -f remove-potcdate.sed < make.po > make.2po && \
+    if cmp make.1po make.2po >/dev/null 2>&1; then \
+      rm -f make.1po make.2po make.po; \
+    else \
+      rm -f make.1po make.2po ./make.pot && \
+      mv make.po ./make.pot; \
+    fi; \
+  else \
+    mv make.po ./make.pot; \
+  fi; \
+}
+make[2]: Leaving directory '/workspaces/make/po'
+test ! -f ./make.pot || \
+  test -z "be.gmo bg.gmo cs.gmo da.gmo de.gmo es.gmo fi.gmo fr.gmo ga.gmo gl.gmo he.gmo hr.gmo id.gmo it.gmo ja.gmo ka.gmo ko.gmo lt.gmo nl.gmo pl.gmo pt.gmo pt_BR.gmo ro.gmo ru.gmo sr.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo zh_TW.gmo" || make be.gmo bg.gmo cs.gmo da.gmo de.gmo es.gmo fi.gmo fr.gmo ga.gmo gl.gmo he.gmo hr.gmo id.gmo it.gmo ja.gmo ka.gmo ko.gmo lt.gmo nl.gmo pl.gmo pt.gmo pt_BR.gmo ro.gmo ru.gmo sr.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo zh_TW.gmo
+make[2]: Entering directory '/workspaces/make/po'
+/usr/bin/msgmerge --update  --lang=be be.po make.pot
+................................................................................................................................................................................. done.
+rm -f be.gmo && /usr/bin/msgfmt -c --statistics --verbose -o be.gmo be.po
+be.po: 66 translated messages, 99 fuzzy translations, 325 untranslated messages.
+/usr/bin/msgmerge --update  --lang=bg bg.po make.pot
+...................................................................................................................................... done.
+rm -f bg.gmo && /usr/bin/msgfmt -c --statistics --verbose -o bg.gmo bg.po
+bg.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=cs cs.po make.pot
+......................................................................................................................................... done.
+rm -f cs.gmo && /usr/bin/msgfmt -c --statistics --verbose -o cs.gmo cs.po
+cs.po: 415 translated messages, 67 fuzzy translations, 8 untranslated messages.
+/usr/bin/msgmerge --update  --lang=da da.po make.pot
+.......................................................................................................................... done.
+rm -f da.gmo && /usr/bin/msgfmt -c --statistics --verbose -o da.gmo da.po
+da.po: 415 translated messages, 66 fuzzy translations, 9 untranslated messages.
+/usr/bin/msgmerge --update  --lang=de de.po make.pot
+....................................................................................................................................... done.
+rm -f de.gmo && /usr/bin/msgfmt -c --statistics --verbose -o de.gmo de.po
+de.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=es es.po make.pot
+................................................................................................................................... done.
+rm -f es.gmo && /usr/bin/msgfmt -c --statistics --verbose -o es.gmo es.po
+es.po: 415 translated messages, 66 fuzzy translations, 9 untranslated messages.
+/usr/bin/msgmerge --update  --lang=fi fi.po make.pot
+..................................................................................................................................................................... done.
+rm -f fi.gmo && /usr/bin/msgfmt -c --statistics --verbose -o fi.gmo fi.po
+fi.po: 274 translated messages, 135 fuzzy translations, 81 untranslated messages.
+/usr/bin/msgmerge --update  --lang=fr fr.po make.pot
+.................................................................................................................................................................................. done.
+rm -f fr.gmo && /usr/bin/msgfmt -c --statistics --verbose -o fr.gmo fr.po
+fr.po: 339 translated messages, 116 fuzzy translations, 35 untranslated messages.
+/usr/bin/msgmerge --update  --lang=ga ga.po make.pot
+..................................................................................................................................................................................... done.
+rm -f ga.gmo && /usr/bin/msgfmt -c --statistics --verbose -o ga.gmo ga.po
+ga.po: 328 translated messages, 124 fuzzy translations, 38 untranslated messages.
+/usr/bin/msgmerge --update  --lang=gl gl.po make.pot
+..................................................................................................................................................................................................................................................................... done.
+rm -f gl.gmo && /usr/bin/msgfmt -c --statistics --verbose -o gl.gmo gl.po
+gl.po: 187 translated messages, 188 fuzzy translations, 115 untranslated messages.
+/usr/bin/msgmerge --update  --lang=he he.po make.pot
+................................................................................................................................................................................................................................................................................................................ done.
+rm -f he.gmo && /usr/bin/msgfmt -c --statistics --verbose -o he.gmo he.po
+he.po: 127 translated messages, 231 fuzzy translations, 132 untranslated messages.
+/usr/bin/msgmerge --update  --lang=hr hr.po make.pot
+................................................................................................................................. done.
+rm -f hr.gmo && /usr/bin/msgfmt -c --statistics --verbose -o hr.gmo hr.po
+hr.po: 415 translated messages, 66 fuzzy translations, 9 untranslated messages.
+/usr/bin/msgmerge --update  --lang=id id.po make.pot
+....................................................................................................................................... done.
+rm -f id.gmo && /usr/bin/msgfmt -c --statistics --verbose -o id.gmo id.po
+id.po: 415 translated messages, 66 fuzzy translations, 9 untranslated messages.
+/usr/bin/msgmerge --update  --lang=it it.po make.pot
+..................................................................................................................................................................................... done.
+rm -f it.gmo && /usr/bin/msgfmt -c --statistics --verbose -o it.gmo it.po
+it.po: 339 translated messages, 114 fuzzy translations, 37 untranslated messages.
+/usr/bin/msgmerge --update  --lang=ja ja.po make.pot
+.................................................................................................................................. done.
+rm -f ja.gmo && /usr/bin/msgfmt -c --statistics --verbose -o ja.gmo ja.po
+ja.po: 415 translated messages, 66 fuzzy translations, 9 untranslated messages.
+/usr/bin/msgmerge --update  --lang=ka ka.po make.pot
+........................................................................................... done.
+rm -f ka.gmo && /usr/bin/msgfmt -c --statistics --verbose -o ka.gmo ka.po
+ka.po: 221 translated messages, 29 fuzzy translations, 240 untranslated messages.
+/usr/bin/msgmerge --update  --lang=ko ko.po make.pot
+............................................................................................................................ done.
+rm -f ko.gmo && /usr/bin/msgfmt -c --statistics --verbose -o ko.gmo ko.po
+ko.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=lt lt.po make.pot
+.................................................................................................................................................................................. done.
+rm -f lt.gmo && /usr/bin/msgfmt -c --statistics --verbose -o lt.gmo lt.po
+lt.po: 88 translated messages, 127 fuzzy translations, 275 untranslated messages.
+/usr/bin/msgmerge --update  --lang=nl nl.po make.pot
+.......................................................................................................................................... done.
+rm -f nl.gmo && /usr/bin/msgfmt -c --statistics --verbose -o nl.gmo nl.po
+nl.po: 415 translated messages, 67 fuzzy translations, 8 untranslated messages.
+/usr/bin/msgmerge --update  --lang=pl pl.po make.pot
+................................................................................................................................... done.
+rm -f pl.gmo && /usr/bin/msgfmt -c --statistics --verbose -o pl.gmo pl.po
+pl.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=pt pt.po make.pot
+.............................................................................................................................. done.
+rm -f pt.gmo && /usr/bin/msgfmt -c --statistics --verbose -o pt.gmo pt.po
+pt.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=pt_BR pt_BR.po make.pot
+.................................................................................................................................................................................... done.
+rm -f pt_BR.gmo && /usr/bin/msgfmt -c --statistics --verbose -o pt_BR.gmo pt_BR.po
+pt_BR.po: 338 translated messages, 116 fuzzy translations, 36 untranslated messages.
+/usr/bin/msgmerge --update  --lang=ro ro.po make.pot
+............................................................................................................................... done.
+rm -f ro.gmo && /usr/bin/msgfmt -c --statistics --verbose -o ro.gmo ro.po
+ro.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=ru ru.po make.pot
+......................................................................................................................................... done.
+rm -f ru.gmo && /usr/bin/msgfmt -c --statistics --verbose -o ru.gmo ru.po
+ru.po: 415 translated messages, 67 fuzzy translations, 8 untranslated messages.
+/usr/bin/msgmerge --update  --lang=sr sr.po make.pot
+................................................................................................................................ done.
+rm -f sr.gmo && /usr/bin/msgfmt -c --statistics --verbose -o sr.gmo sr.po
+sr.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=sv sv.po make.pot
+................................................................................................................................ done.
+rm -f sv.gmo && /usr/bin/msgfmt -c --statistics --verbose -o sv.gmo sv.po
+sv.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+/usr/bin/msgmerge --update  --lang=tr tr.po make.pot
+................................................................................................................................................................................................................................................................................................................... done.
+rm -f tr.gmo && /usr/bin/msgfmt -c --statistics --verbose -o tr.gmo tr.po
+tr.po: 170 translated messages, 238 fuzzy translations, 82 untranslated messages.
+/usr/bin/msgmerge --update  --lang=uk uk.po make.pot
+.................................................................................................................................... done.
+rm -f uk.gmo && /usr/bin/msgfmt -c --statistics --verbose -o uk.gmo uk.po
+uk.po: 415 translated messages, 67 fuzzy translations, 8 untranslated messages.
+/usr/bin/msgmerge --update  --lang=vi vi.po make.pot
+................................................................................................................................................................................... done.
+rm -f vi.gmo && /usr/bin/msgfmt -c --statistics --verbose -o vi.gmo vi.po
+vi.po: 339 translated messages, 116 fuzzy translations, 35 untranslated messages.
+/usr/bin/msgmerge --update  --lang=zh_CN zh_CN.po make.pot
+............................................................................................................................ done.
+rm -f zh_CN.gmo && /usr/bin/msgfmt -c --statistics --verbose -o zh_CN.gmo zh_CN.po
+zh_CN.po: 415 translated messages, 67 fuzzy translations, 8 untranslated messages.
+/usr/bin/msgmerge --update  --lang=zh_TW zh_TW.po make.pot
+............................................................................................................................................. done.
+rm -f zh_TW.gmo && /usr/bin/msgfmt -c --statistics --verbose -o zh_TW.gmo zh_TW.po
+zh_TW.po: 415 translated messages, 65 fuzzy translations, 10 untranslated messages.
+make[2]: Leaving directory '/workspaces/make/po'
+touch stamp-po
+make[1]: Leaving directory '/workspaces/make/po'
+Making check in doc
+make[1]: Entering directory '/workspaces/make/doc'
+Updating ./version.texi
+restore=: && backupdir=".am$$" && \
+am__cwd=`pwd` && CDPATH="${ZSH_VERSION+.}:" && cd . && \
+rm -rf $backupdir && mkdir $backupdir && \
+if (/bin/bash '/workspaces/make/build-aux/missing' makeinfo --version) >/dev/null 2>&1; then \
+  for f in make.info make.info-[0-9] make.info-[0-9][0-9] make.i[0-9] make.i[0-9][0-9]; do \
+    if test -f $f; then mv $f $backupdir; restore=mv; else :; fi; \
+  done; \
+else :; fi && \
+cd "$am__cwd"; \
+if /bin/bash '/workspaces/make/build-aux/missing' makeinfo   -I . \
+ -o make.info make.texi; \
+then \
+  rc=0; \
+  CDPATH="${ZSH_VERSION+.}:" && cd .; \
+else \
+  rc=$?; \
+  CDPATH="${ZSH_VERSION+.}:" && cd . && \
+  $restore $backupdir/* `echo "./make.info" | sed 's|[^/]*$||'`; \
+fi; \
+rm -rf $backupdir; exit $rc
+/workspaces/make/build-aux/missing: line 81: makeinfo: command not found
+WARNING: 'makeinfo' is missing on your system.
+         You should only need it if you modified a '.texi' file, or
+         any other file indirectly affecting the aspect of the manual.
+         You might want to install the Texinfo package:
+         <https://www.gnu.org/software/texinfo/>
+         The spurious makeinfo call might also be the consequence of
+         using a buggy 'make' (AIX, DU, IRIX), in which case you might
+         want to install GNU make:
+         <https://www.gnu.org/software/make/>
+make[1]: *** [Makefile:420: make.info] Error 127
+make[1]: Leaving directory '/workspaces/make/doc'
+make: *** [Makefile:985: check-recursive] Error 1
+vscode ➜ /workspaces/make (master) $ make check
+Making check in lib
+make[1]: Entering directory '/workspaces/make/lib'
+make  check-recursive
+make[2]: Entering directory '/workspaces/make/lib'
+make[3]: Entering directory '/workspaces/make/lib'
+make[3]: Nothing to be done for 'check-am'.
+make[3]: Leaving directory '/workspaces/make/lib'
+make[2]: Leaving directory '/workspaces/make/lib'
+make[1]: Leaving directory '/workspaces/make/lib'
+Making check in po
+make[1]: Entering directory '/workspaces/make/po'
+make[1]: Nothing to be done for 'check'.
+make[1]: Leaving directory '/workspaces/make/po'
+Making check in doc
+make[1]: Entering directory '/workspaces/make/doc'
+restore=: && backupdir=".am$$" && \
+am__cwd=`pwd` && CDPATH="${ZSH_VERSION+.}:" && cd . && \
+rm -rf $backupdir && mkdir $backupdir && \
+if (/bin/bash '/workspaces/make/build-aux/missing' makeinfo --version) >/dev/null 2>&1; then \
+  for f in make.info make.info-[0-9] make.info-[0-9][0-9] make.i[0-9] make.i[0-9][0-9]; do \
+    if test -f $f; then mv $f $backupdir; restore=mv; else :; fi; \
+  done; \
+else :; fi && \
+cd "$am__cwd"; \
+if /bin/bash '/workspaces/make/build-aux/missing' makeinfo   -I . \
+ -o make.info make.texi; \
+then \
+  rc=0; \
+  CDPATH="${ZSH_VERSION+.}:" && cd .; \
+else \
+  rc=$?; \
+  CDPATH="${ZSH_VERSION+.}:" && cd . && \
+  $restore $backupdir/* `echo "./make.info" | sed 's|[^/]*$||'`; \
+fi; \
+rm -rf $backupdir; exit $rc
+make[1]: Leaving directory '/workspaces/make/doc'
+make[1]: Entering directory '/workspaces/make'
+depbase=`echo src/ar.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/ar.o -MD -MP -MF $depbase.Tpo -c -o src/ar.o src/ar.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/arscan.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/arscan.o -MD -MP -MF $depbase.Tpo -c -o src/arscan.o src/arscan.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/commands.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/commands.o -MD -MP -MF $depbase.Tpo -c -o src/commands.o src/commands.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/default.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/default.o -MD -MP -MF $depbase.Tpo -c -o src/default.o src/default.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/dir.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/dir.o -MD -MP -MF $depbase.Tpo -c -o src/dir.o src/dir.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/expand.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/expand.o -MD -MP -MF $depbase.Tpo -c -o src/expand.o src/expand.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/file.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/file.o -MD -MP -MF $depbase.Tpo -c -o src/file.o src/file.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/function.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/function.o -MD -MP -MF $depbase.Tpo -c -o src/function.o src/function.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/getopt.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/getopt.o -MD -MP -MF $depbase.Tpo -c -o src/getopt.o src/getopt.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/getopt1.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/getopt1.o -MD -MP -MF $depbase.Tpo -c -o src/getopt1.o src/getopt1.c &&\
+mv -f $depbase.Tpo $depbase.Po
+(echo 'static const char *const GUILE_module_defn = " '\\ \
+  && sed -e 's/;.*//' -e '/^[ \t]*$/d' -e 's/"/\\"/g' -e 's/$/ \\/' \
+         ./src/gmk-default.scm \
+  && echo '";') > src/gmk-default.h
+depbase=`echo src/guile.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/guile.o -MD -MP -MF $depbase.Tpo -c -o src/guile.o src/guile.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/hash.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/hash.o -MD -MP -MF $depbase.Tpo -c -o src/hash.o src/hash.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/implicit.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/implicit.o -MD -MP -MF $depbase.Tpo -c -o src/implicit.o src/implicit.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/job.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/job.o -MD -MP -MF $depbase.Tpo -c -o src/job.o src/job.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/load.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/load.o -MD -MP -MF $depbase.Tpo -c -o src/load.o src/load.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/loadapi.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/loadapi.o -MD -MP -MF $depbase.Tpo -c -o src/loadapi.o src/loadapi.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/main.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/main.o -MD -MP -MF $depbase.Tpo -c -o src/main.o src/main.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/misc.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/misc.o -MD -MP -MF $depbase.Tpo -c -o src/misc.o src/misc.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/output.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/output.o -MD -MP -MF $depbase.Tpo -c -o src/output.o src/output.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/read.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/read.o -MD -MP -MF $depbase.Tpo -c -o src/read.o src/read.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/remake.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/remake.o -MD -MP -MF $depbase.Tpo -c -o src/remake.o src/remake.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/rule.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/rule.o -MD -MP -MF $depbase.Tpo -c -o src/rule.o src/rule.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/shuffle.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/shuffle.o -MD -MP -MF $depbase.Tpo -c -o src/shuffle.o src/shuffle.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/signame.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/signame.o -MD -MP -MF $depbase.Tpo -c -o src/signame.o src/signame.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/strcache.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/strcache.o -MD -MP -MF $depbase.Tpo -c -o src/strcache.o src/strcache.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/variable.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/variable.o -MD -MP -MF $depbase.Tpo -c -o src/variable.o src/variable.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/version.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/version.o -MD -MP -MF $depbase.Tpo -c -o src/version.o src/version.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/vpath.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/vpath.o -MD -MP -MF $depbase.Tpo -c -o src/vpath.o src/vpath.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/warning.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/warning.o -MD -MP -MF $depbase.Tpo -c -o src/warning.o src/warning.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/posixos.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/posixos.o -MD -MP -MF $depbase.Tpo -c -o src/posixos.o src/posixos.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo src/remote-stub.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H   -Isrc -I./src -Ilib -I./lib -DLIBDIR=\"/usr/local/lib\" -DLOCALEDIR=\"/usr/local/share/locale\"   -DMAKE_MAINTAINER_MODE   -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -MT src/remote-stub.o -MD -MP -MF $depbase.Tpo -c -o src/remote-stub.o src/remote-stub.c &&\
+mv -f $depbase.Tpo $depbase.Po
+gcc  -C -Wall -Wextra -Werror -Wwrite-strings -Wshadow -Wdeclaration-after-statement -Wbad-function-cast -Wformat-security -Wtype-limits -Wunused-but-set-parameter -Wlogical-op -Wpointer-arith -Wignored-qualifiers -Wformat-signedness -Wduplicated-cond  -g -O2 -Wl,--export-dynamic  -o make src/ar.o src/arscan.o src/commands.o src/default.o src/dir.o src/expand.o src/file.o src/function.o src/getopt.o src/getopt1.o src/guile.o src/hash.o src/implicit.o src/job.o src/load.o src/loadapi.o src/main.o src/misc.o src/output.o src/read.o src/remake.o src/rule.o src/shuffle.o src/signame.o src/strcache.o src/variable.o src/version.o src/vpath.o src/warning.o  src/posixos.o  src/remote-stub.o   lib/libgnu.a   
+make  check-local
+make[2]: Entering directory '/workspaces/make'
+rm -f test-suite.log tests/.test-result 
+if test -f './tests/run_make_tests.pl'; then \
+  ulimit -n 128; \
+  if perl -v >/dev/null 2>&1; then \
+    echo "cd tests && perl -w /workspaces/make/tests/run_make_tests.pl -make ../make "; \
+    (cd tests && perl -w '/workspaces/make/tests/run_make_tests.pl' -make '../make' ; echo $? >.test-result) 2>&1 | tee test-suite.log; \
+    export TAR_OPTIONS='--mode=u+w,go-w --owner=0 --group=0 --numeric-owner'; \
+    er=$(cat tests/.test-result); if test "$er" -ne 0; then \
+      dirnm="makeerror-4.4.90-aarch64-unknown-linux-gnu-$(mawk 'BEGIN{srand(); c = "abcdefghijklmnopqrstuvwxyz0123456789"; print substr(c,int(rand()*36),1) "" substr(c,int(rand()*36),1) "" substr(c,int(rand()*36),1) "" substr(c,int(rand()*36),1);}')"; fnm="$dirnm.tar.gz"; \
+      rm -rf "$dirnm"; mkdir "$dirnm"; \
+      ${TAR-tar} chf - config.status config.log src/config.h src/mkconfig.h test-suite.log tests/work | (cd "$dirnm"; ${TAR-tar} xf -); \
+      ${TAR-tar} chf - "$dirnm" | eval GZIP= gzip --best -c >"$fnm"; \
+      echo "*** Testing FAILED!  Details: $fnm"; \
+      echo '*** Please report to <bug-make@gnu.org>'; echo; \
+      exit $er; \
+    fi; \
+  else \
+    echo "Can't find a working Perl (perl); the test suite requires Perl."; \
+  fi; \
+else \
+  echo "Can't find the GNU Make test suite (./tests)."; \
+fi
+cd tests && perl -w /workspaces/make/tests/run_make_tests.pl -make ../make 
+Name "main::vos" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 346.
+Name "main::testname" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 659.
+Name "main::tmpfilesuffix" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 379.
+Name "main::verbose" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 606.
+Name "main::profile" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 346.
+Name "main::testee" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 377.
+Name "main::testee_version" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 554.
+Name "main::argv" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 111.
+Name "main::cwddir" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 42.
+Name "CORE::GLOBAL::rmdir" used only once: possible typo at /workspaces/make/tests/run_make_tests.pl line 86.
+-------------------------------------------------------------------------------
+                      Running tests for GNU Make on linux
+                                GNU Make 4.4.90
+-------------------------------------------------------------------------------
+
+Finding tests in scripts...
+Searching for tests...
+Creating dirs in work...
+
+features/archives ....................................... ok     (16 passed)
+features/comments ....................................... ok     (1 passed)
+features/conditionals ................................... ok     (14 passed)
+features/default_names .................................. ok     (3 passed)
+features/dircache ....................................... ok     (2 passed)
+features/double_colon ................................... FAILED (15/18 passed)
+features/echoing ........................................ ok     (4 passed)
+features/errors ......................................... ok     (10 passed)
+features/escape ......................................... ok     (10 passed)
+features/exec ........................................... ok     (16 passed)
+features/expand ......................................... ok     (3 passed)
+features/export ......................................... ok     (14 passed)
+features/grouped_targets ................................ ok     (19 passed)
+features/implicit_search ................................ ok     (89 passed)
+features/include ........................................ ok     (38 passed)
+features/jobserver ...................................... ok     (18 passed)
+features/load ........................................... ok     (10 passed)
+features/loadapi ........................................ ok     (23 passed)
+features/mult_rules ..................................... ok     (3 passed)
+features/mult_targets ................................... ok     (2 passed)
+features/order_only ..................................... ok     (10 passed)
+features/output-sync .................................... ok     (18 passed)
+features/override ....................................... ok     (4 passed)
+features/parallelism .................................... FAILED (11/13 passed)
+features/patspecific_vars ............................... ok     (10 passed)
+features/patternrules ................................... ok     (72 passed)
+features/quoting ........................................ ok     (1 passed)
+features/recursion ...................................... ok     (3 passed)
+features/reinvoke ....................................... ok     (12 passed)
+features/rule_glob ...................................... ok     (3 passed)
+features/se_explicit .................................... ok     (31 passed)
+features/se_implicit .................................... ok     (30 passed)
+features/se_statpat ..................................... ok     (12 passed)
+features/shell_assignment ............................... ok     (4 passed)
+features/statipattrules ................................. ok     (68 passed)
+features/suffixrules .................................... ok     (19 passed)
+features/targetvars ..................................... ok     (47 passed)
+features/temp_stdin ..................................... ok     (8 passed)
+features/utf8 ........................................... ok     (1 passed)
+features/varnesting ..................................... ok     (2 passed)
+features/vpath .......................................... ok     (5 passed)
+features/vpathgpath ..................................... ok     (1 passed)
+features/vpathplus ...................................... ok     (4 passed)
+functions/abspath ....................................... ok     (1 passed)
+functions/addprefix ..................................... ok     (1 passed)
+functions/addsuffix ..................................... ok     (2 passed)
+functions/andor ......................................... ok     (2 passed)
+functions/basename ...................................... ok     (1 passed)
+functions/call .......................................... ok     (3 passed)
+functions/dir ........................................... ok     (1 passed)
+functions/error ......................................... ok     (5 passed)
+functions/eval .......................................... ok     (9 passed)
+functions/file .......................................... ok     (22 passed)
+functions/filter-out .................................... ok     (6 passed)
+functions/findstring .................................... ok     (1 passed)
+functions/flavor ........................................ ok     (1 passed)
+functions/foreach ....................................... ok     (6 passed)
+functions/guile ......................................... N/A
+functions/if ............................................ ok     (1 passed)
+functions/intcmp ........................................ ok     (5 passed)
+functions/join .......................................... ok     (1 passed)
+functions/let ........................................... ok     (7 passed)
+functions/notdir ........................................ ok     (1 passed)
+functions/origin ........................................ ok     (1 passed)
+functions/realpath ...................................... ok     (3 passed)
+functions/shell ......................................... ok     (22 passed)
+functions/sort .......................................... ok     (2 passed)
+functions/strip ......................................... ok     (2 passed)
+functions/substitution .................................. ok     (3 passed)
+functions/suffix ........................................ ok     (1 passed)
+functions/value ......................................... ok     (1 passed)
+functions/warning ....................................... ok     (5 passed)
+functions/wildcard ...................................... ok     (10 passed)
+functions/word .......................................... ok     (18 passed)
+misc/bs-nl .............................................. ok     (28 passed)
+misc/close_stdout ....................................... ok     (1 passed)
+misc/failure ............................................ ok     (9 passed)
+misc/fopen-fail ......................................... ok     (1 passed)
+misc/general1 ........................................... ok     (1 passed)
+misc/general2 ........................................... ok     (1 passed)
+misc/general3 ........................................... ok     (14 passed)
+misc/general4 ........................................... ok     (10 passed)
+misc/utf8 ............................................... ok     (1 passed)
+options/dash-B .......................................... ok     (8 passed)
+options/dash-C .......................................... ok     (4 passed)
+options/dash-I .......................................... ok     (9 passed)
+options/dash-W .......................................... ok     (10 passed)
+options/dash-d .......................................... ok     (1 passed)
+options/dash-e .......................................... ok     (10 passed)
+options/dash-f .......................................... ok     (32 passed)
+options/dash-k .......................................... ok     (3 passed)
+options/dash-l .......................................... FAILED (0/1 passed)
+options/dash-n .......................................... ok     (8 passed)
+options/dash-q .......................................... ok     (11 passed)
+options/dash-r .......................................... ok     (21 passed)
+options/dash-s .......................................... ok     (11 passed)
+options/dash-t .......................................... ok     (2 passed)
+options/eval ............................................ ok     (5 passed)
+options/general ......................................... ok     (2 passed)
+options/print-directory ................................. ok     (12 passed)
+options/print-targets ................................... ok     (1 passed)
+options/shuffle ......................................... ok     (12 passed)
+options/symlinks ........................................ ok     (10 passed)
+options/warn ............................................ ok     (37 passed)
+targets/DEFAULT ......................................... ok     (1 passed)
+targets/DELETE_ON_ERROR ................................. ok     (2 passed)
+targets/FORCE ........................................... ok     (1 passed)
+targets/IGNORE .......................................... ok     (3 passed)
+targets/INTERMEDIATE .................................... ok     (10 passed)
+targets/NOTINTERMEDIATE ................................. ok     (12 passed)
+targets/ONESHELL ........................................ ok     (11 passed)
+targets/PHONY ........................................... ok     (1 passed)
+targets/POSIX ........................................... ok     (12 passed)
+targets/SECONDARY ....................................... ok     (12 passed)
+targets/SILENT .......................................... ok     (3 passed)
+targets/WAIT ............................................ Error running /workspaces/make/tests/../make (expected 0; got 512)
+/workspaces/make/tests/scripts/targets/WAIT:128: (cd work/targets/WAIT && /workspaces/make/tests/../make -f t012.mk -j10)
+Error running /workspaces/make/tests/../make (expected 0; got 512)
+/workspaces/make/tests/scripts/targets/WAIT:143: (cd work/targets/WAIT && /workspaces/make/tests/../make -f t013.mk -j10 pre1 .WAIT pre2 pre3)
+Error running /workspaces/make/tests/../make (expected 0; got 512)
+/workspaces/make/tests/scripts/targets/WAIT:157: (cd work/targets/WAIT && /workspaces/make/tests/../make -f t014.mk -j10)
+Error running /workspaces/make/tests/../make (expected 0; got 512)
+/workspaces/make/tests/scripts/targets/WAIT:175: (cd work/targets/WAIT && /workspaces/make/tests/../make -f t015.mk -j10 pre1 pre2 .WAIT post1 post2)
+FAILED (22/36 passed)
+targets/clean ........................................... ok     (2 passed)
+variables/CURDIR ........................................ ok     (1 passed)
+variables/DEFAULT_GOAL .................................. ok     (5 passed)
+variables/EXTRA_PREREQS ................................. ok     (16 passed)
+variables/GNUMAKEFLAGS .................................. ok     (5 passed)
+variables/INCLUDE_DIRS .................................. ok     (6 passed)
+variables/LIBPATTERNS ................................... ok     (2 passed)
+variables/MAKE .......................................... ok     (1 passed)
+variables/MAKECMDGOALS .................................. ok     (3 passed)
+variables/MAKEFILES ..................................... ok     (2 passed)
+variables/MAKEFLAGS ..................................... ok     (227 passed)
+variables/MAKELEVEL ..................................... ok     (1 passed)
+variables/MAKE_RESTARTS ................................. ok     (3 passed)
+variables/MFILE_LIST .................................... ok     (2 passed)
+variables/SHELL ......................................... ok     (8 passed)
+variables/WARNINGS ...................................... ok     (25 passed)
+variables/append ........................................ ok     (2337 passed)
+variables/automatic ..................................... ok     (9 passed)
+variables/conditional ................................... ok     (10 passed)
+variables/define ........................................ ok     (17 passed)
+variables/flavors ....................................... ok     (16 passed)
+variables/negative ...................................... ok     (7 passed)
+variables/private ....................................... ok     (16 passed)
+variables/special ....................................... ok     (3 passed)
+variables/undefine ...................................... ok     (5 passed)
+vms/library ............................................. N/A
+
+20 Tests in 4 Categories Failed :-(
+
+  Failure 1:
+    run:  work/features/double_colon/t004.run
+    base: work/features/double_colon/t004.base
+    diff: work/features/double_colon/t004.diff
+  Failure 2:
+    run:  work/features/double_colon/t013.run
+    base: work/features/double_colon/t013.base
+    diff: work/features/double_colon/t013.diff
+  Failure 3:
+    run:  work/features/double_colon/t018.run
+    base: work/features/double_colon/t018.base
+    diff: work/features/double_colon/t018.diff
+  Failure 4:
+    run:  work/features/parallelism/t006.run
+    base: work/features/parallelism/t006.base
+    diff: work/features/parallelism/t006.diff
+  Failure 5:
+    run:  work/features/parallelism/t007.run
+    base: work/features/parallelism/t007.base
+    diff: work/features/parallelism/t007.diff
+  Failure 6:
+    run:  work/options/dash-l/t001.run
+    base: work/options/dash-l/t001.base
+    diff: work/options/dash-l/t001.diff
+  Failure 7:
+    run:  work/targets/WAIT/t004.run
+    base: work/targets/WAIT/t004.base
+    diff: work/targets/WAIT/t004.diff
+  Failure 8:
+    run:  work/targets/WAIT/t006.run
+    base: work/targets/WAIT/t006.base
+    diff: work/targets/WAIT/t006.diff
+  Failure 9:
+    run:  work/targets/WAIT/t007.run
+    base: work/targets/WAIT/t007.base
+    diff: work/targets/WAIT/t007.diff
+  Failure 10:
+    run:  work/targets/WAIT/t008.run
+    base: work/targets/WAIT/t008.base
+    diff: work/targets/WAIT/t008.diff
+  Failure 11:
+    run:  work/targets/WAIT/t013.run
+    base: work/targets/WAIT/t013.base
+    diff: work/targets/WAIT/t013.diff
+  Failure 12:
+    run:  work/targets/WAIT/t014.run
+    base: work/targets/WAIT/t014.base
+    diff: work/targets/WAIT/t014.diff
+  Failure 13:
+    run:  work/targets/WAIT/t015.run
+    base: work/targets/WAIT/t015.base
+    diff: work/targets/WAIT/t015.diff
+  Failure 14:
+    run:  work/targets/WAIT/t016.run
+    base: work/targets/WAIT/t016.base
+    diff: work/targets/WAIT/t016.diff
+  Failure 15:
+    run:  work/targets/WAIT/t018.run
+    base: work/targets/WAIT/t018.base
+    diff: work/targets/WAIT/t018.diff
+  Failure 16:
+    run:  work/targets/WAIT/t019.run
+    base: work/targets/WAIT/t019.base
+    diff: work/targets/WAIT/t019.diff
+  Failure 17:
+    run:  work/targets/WAIT/t020.run
+    base: work/targets/WAIT/t020.base
+    diff: work/targets/WAIT/t020.diff
+  Failure 18:
+    run:  work/targets/WAIT/t021.run
+    base: work/targets/WAIT/t021.base
+    diff: work/targets/WAIT/t021.diff
+  Failure 19:
+    run:  work/targets/WAIT/t022.run
+    base: work/targets/WAIT/t022.base
+    diff: work/targets/WAIT/t022.diff
+  Failure 20:
+    run:  work/targets/WAIT/t023.run
+    base: work/targets/WAIT/t023.base
+    diff: work/targets/WAIT/t023.diff
+tar: src/mkconfig.h: Cannot stat: No such file or directory
+tar: Exiting with failure status due to previous errors
+*** Testing FAILED!  Details: makeerror-4.4.90-aarch64-unknown-linux-gnu-k6ls.tar.gz
+*** Please report to <bug-make@gnu.org>
+
+make[2]: *** [Makefile:1553: check-regression] Error 1
+make[2]: Leaving directory '/workspaces/make'
+make[1]: *** [Makefile:1283: check-am] Error 2
+make[1]: Leaving directory '/workspaces/make'
+make: *** [Makefile:985: check-recursive] Error 1
